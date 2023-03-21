@@ -1,0 +1,16 @@
+digraph {
+	{
+		"Connecté au serveur"
+		"Message reçu du serveur"
+		"Envoi d'un message au serveur"
+		"Connecté au serveur" -> "Message reçu du serveur"
+		"Message reçu du serveur" -> "Envoi d'un message au serveur"
+	}
+	{
+		"Connexion acceptée"
+		"Message reçu du client"
+		"Envoi d'un message au client"
+		"Connexion acceptée" -> "Message reçu du client"
+		"Message reçu du client" -> "Envoi d'un message au client"
+	}
+}
