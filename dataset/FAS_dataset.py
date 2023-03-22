@@ -13,7 +13,7 @@ class FASDataset(Dataset):
         super().__init__()
         self.root_dir = root_dir
         self.data = pd.read_csv(os.path.join(self.root_dir, csv_file))
-        self.transform = transform
+        self.transform = transform or NonDistortedAugmentation((224, 224), [0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         
         if smoothing:
             self.label_weight = 1.0
@@ -29,9 +29,8 @@ class FASDataset(Dataset):
         label = label.astype(np.float32)
         label = np.expand_dims(label, axis=0)
         
-        if self.transform:
-            img1 = self.transform(img)
-            img2 = self.transform(img)
+        img1 = self.transform(img)
+        img2 = self.transform(img)
 
         return img1, img2, label
 
