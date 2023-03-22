@@ -6,7 +6,6 @@ import numpy as np
 from PIL import Image
 from torchvision import transforms
 import glob
-
 class FASDataset(Dataset):
 
     def __init__(self, root_dir, csv_file, transform=None, is_train=True, smoothing=True):
