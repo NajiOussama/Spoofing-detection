@@ -4,7 +4,7 @@ device: 'cuda:2'
 seed: 42
 dataset:
   name: 'zalo'
-  root: '/home/taft/ALCON_SPC/detect/datasets/frame_classes_16'
+  root: '/Users/user/Desktop/CentraleSupelec/POLE IA /Implementation-patchnet-main/Dataset_essai'
   augmentation:
     rand_crop_size: 224
     rand_hori_flip: 0.5
