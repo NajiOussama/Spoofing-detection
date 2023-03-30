@@ -1,6 +1,6 @@
 output_dir: 'runs/save'
 log_dir: 'runs/logs'
-device: 'cuda:2'
+device: 'cuda:0'
 seed: 42
 dataset:
   name: 'zalo'

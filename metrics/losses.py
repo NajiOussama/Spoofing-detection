@@ -59,7 +59,7 @@ class AdMSoftmaxLoss(nn.Module):
         self.m = [m_s, m_l]
         self.in_features = in_features
         self.out_features = out_features
-        self.fc = nn.Linear(in_features, out_features, bias=False)
+        self.fc = nn.Linear(512, out_features, bias=False)
 
     def forward(self, x, labels):
         '''
@@ -67,15 +67,15 @@ class AdMSoftmaxLoss(nn.Module):
             x shape (N, in_features)
             labels shape (N)
         '''
-        # assert len(x) == len(labels)
+        assert len(x) == len(labels)
         assert torch.min(labels) >= 0
         assert torch.max(labels) < self.out_features
         
         for W in self.fc.parameters():
             W = F.normalize(W, dim=1)
-
+        self.in_features = 512
         x = F.normalize(x, dim=1)
-
+        
         wf = self.fc(x)
         m = torch.tensor([self.m[ele] for ele in labels]).to(x.device)
         numerator = self.s * (torch.diagonal(wf.transpose(0, 1)[labels]) - m)
