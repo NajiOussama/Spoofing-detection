@@ -28,7 +28,7 @@ if __name__ == '__main__':
     network = build_network(cfg, device)
     network = network.to(device)
     loss = PatchLoss().to(device)
-    saved_name = "/home/taft/ALCON_SPC/detect/NEW_PATCHNET/runs/save/CDCNpp_196_0.21588014953797965.pth"
+    saved_name = "/content/runs/save/CDCNs_195_0.0018514913972467184.pth"
     state = torch.load(saved_name)
 
     network.load_state_dict(state['state_dict'])
@@ -44,8 +44,8 @@ if __name__ == '__main__':
         transforms.Normalize(cfg['dataset']['mean'], cfg['dataset']['sigma'])
     ])
     
-    test_data_path = "/home/taft/ALCON_SPC/detect/datasets/public_test_2/videos/*"
-    result_path = "/home/taft/ALCON_SPC/detect/result_cdcnpp.csv"
+    test_data_path = "/content/drive/MyDrive/PPIA_Spoofing_detection/Implementation-patchnet-main/output.avi"
+    result_path = "Dataset5Go/test.csv"
     d = {"fname":[], "liveness_score":[]}
 
     videos = glob.glob(test_data_path)

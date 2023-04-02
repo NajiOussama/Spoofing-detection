@@ -1,22 +1,23 @@
-output_dir: 'runs/save'
-log_dir: 'runs/logs'
-device: 'cuda:2'
+output_dir: '/content/runs/save'
+log_dir: '/content/runs/logs'
+device: 'cuda:0'
 seed: 42
 dataset:
   name: 'zalo'
-  root: '/home/taft/ALCON_SPC/detect/datasets/frame_classes_16'
+  root: 'Datasetss'
   augmentation:
     rand_crop_size: 224
     rand_hori_flip: 0.5
     rand_rotation: 20
-  train_set: 'train_uniform.csv'
-  val_set: 'val_uniform.csv'
+  train_set: 'train.csv'
+  val_set: 'val.csv'
   mean: [0.5070, 0.4764, 0.4551]
   sigma: [0.2480, 0.2468, 0.2416]
 
 model:
-  base: 'swin_base'
+  base: 'CDCNs'
   pretrained: True
+  weights: 'imagenet'
   image_size: [300, 300]
 
 train:
